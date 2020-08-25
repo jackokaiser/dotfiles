@@ -91,6 +91,14 @@ def stow_dotfiles(all_dotfiles):
         stow_res = subprocess.run(['stow', dotfiles['name'], '-t', dotfiles['target']])
     os.chdir(SCRIPT_DIR)
 
+def post_stow():
+    print("installing emacs packages")
+    subprocess.run(['./install_emacs_packages.el'])
+    print("installing fonts")
+    subprocess.run(['fc-cache', '-vf', '~/.fonts/'])
+    print("default shell to zsh")
+    subprocess.run(['sudo', 'chsh', '-s', '/bin/zsh'])
+
 def main():
     if args.all or args.apt:
         install_ppas(additional_ppa)
@@ -99,6 +107,7 @@ def main():
     if args.all or args.ohmyzsh:
         install_oh_my_zsh()
     stow_dotfiles(dotfiles)
+    post_stow()
 
 if __name__ == "__main__":
     # execute only if run as a script
