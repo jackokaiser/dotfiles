@@ -8,7 +8,7 @@
 (package-initialize)
 
 ;; set package-selected-packages variable
-(setq custom-file "~/.emacs.d/jacques/emacs-custom.el")
+(setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
 (package-refresh-contents)
