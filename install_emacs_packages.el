@@ -1,4 +1,4 @@
-#!/usr/bin/emacs --script
+#!/usr/local/bin/emacs --script
 
 (require 'package)
 (add-to-list
