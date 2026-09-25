@@ -15,11 +15,12 @@ args = parser.parse_args()
 yes = '-y'
 
 additional_ppa = [
-    'ppa:ubuntu-elisp/ppa'
+    # ppa:ubuntu-elisp/ppa doesn't publish for releases newer than jammy (22.04),
+    # so on newer Ubuntu use the distro's own 'emacs' package instead.
 ]
 
 apt_packages = [
-    'emacs-snapshot',
+    'emacs',
     'curl',
     'fzf',
     'git',
